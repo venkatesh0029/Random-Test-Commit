@@ -1,8 +1,8 @@
-name: Random Commit Every 3 Hours
+name: Random Commit Every 2 Minutes
 
 on:
   schedule:
-    - cron: "0 */2 * * *" # Runs every 2 hours
+    - cron: "*/2 * * * *" # Runs every 2 minutes
   workflow_dispatch:      # Allows manual trigger
 
 jobs:
