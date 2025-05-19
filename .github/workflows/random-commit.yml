@@ -1,0 +1,25 @@
+name: Random Commit Every 3 Hours
+
+on:https://github.com/venkatesh0029
+  schedule:
+    - cron: "0 */3 * * *" # Runs every 3 hours
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  random-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Make a random commit
+        run: |
+          echo "Random number: $RANDOM" >> random.txt
+          git config --global user.email "venkateshbonthala8@gmail.com"
+          git config --global user.name "venkatesh0029"
+          git add random.txt
+          git commit -m "Random commit $(date)"
+          git push
